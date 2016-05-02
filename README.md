@@ -89,7 +89,8 @@ define(
 ?>
 ```
 
-## Initial settings (see: [widgets.ui.config.js](https://github.com/lepe/widgets.ui.js/blob/master/js/widgets.ui.config.js))
+## Initial settings 
+(see: [widgets.ui.config.js](https://github.com/lepe/widgets.ui.js/blob/master/js/widgets.ui.config.js))
 
 By default require.js is set to search required javascript files at "/js" URL. You can change it by setting:
 ```javascript
