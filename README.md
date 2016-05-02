@@ -5,15 +5,15 @@ Its main goal is to create Web applications using "Widgets" which can be reused,
 
 This framework uses:
 * [require.js](https://github.com/requirejs/requirejs) to automatically download required Javascript files (on demand).
-* [chic.js](https://github.com/rowanmanning/chic) as a base Class model, which allows an easy extension of Widgets*
+* [chic.js](https://github.com/rowanmanning/chic) as a Class based model (which allows to use JS object as classes)
 * [transparency.js](https://github.com/leonidas/transparency) to interact with the HTML elements in a simpler way.
 * JQuery to simplify code
 
 There are mainly 2 classes:
-### UI.js
+### UI
 This class is used to create the general user interface. It also controls the communication with the server and initialize the Widgets.
 
-Example Usage: 
+Example Usage [demo.js](): 
 
 ```javascript
 require(
@@ -22,9 +22,9 @@ require(
         var helloW = new HelloWidget();
         var timeW = new TimeWidget();
         $("#main").appendWidget(helloW); // "appendWidget" will append the Widget to specified element.
-        $("#right").addWidget(timeW); //Used "addWidget" here to place only once (using JQuery's "html" function)
+        $("#right").placeWidget(timeW); // "placeWidget" will insert a widget only once (using JQuery's "html" function)
         //$("#main").doWidgets(); <-- selective initialization (any JQuery selector can be used)
-        $.ui.doWidgets(); //<--global (initialize all widgets)
+        WidgetUI.doWidgets(); //<--global (initialize all widgets: using specified global object)
         setInterval(function(){
             timeW.update(); //Will update the widget every second
         }, 1000);
@@ -32,19 +32,19 @@ require(
 );
 ```
 
-### Widget.js
+### Widget
 This class serves as a base for all possible Widgets, so all widgets should extend this class. You can extend your widgets in the same way to create more specific widgets.
 
-Example:
+Example: [TimeWidget.js]()
 
 ```javascript
 define(
-    ["Widget"],  //depends on
+    [],  //Which Widgets depend on (to load JS file). For example: "basicWidget"
     function(){
-        TimeWidget = Widget.extend({
+        TimeWidget = Widget.extend({ //If you want to extend "basicWidget", use ... = basicWidget.extend({ ...
             template : "time",
-            request  : "currtime", //If ommited, it will use template name as request parameter
-            render   : function(data, callback) {
+            request  : "currtime", //If omitted, it will use template name as request parameter: ?req=time
+            render   : function(data, calblack) {
                 //This callback uses "transparency.js". To understand it, please check transparency.js documentation.
                 callback({
                     models: data, //Object used as data provider
@@ -72,12 +72,17 @@ define(
   header('Content-Type: application/json; charset=utf8');
   if($_GET["req"] == "currtime") {
       $res = array("d" => date("Y-m-d H:i:s"));
-      echo $_GET["callback"]."(".json_encode($res).")";
+      if(isset($_GET["callback"])) {
+         echo $_GET["callback"]."(".json_encode($res).")";
+      } else {
+         echo json_encode($res);
+      }
+
   }
 ?>
 ```
 
-## Initial settings
+## Initial settings (see: [widgets.ui.config.js]())
 
 By default require.js is set to search required javascript files at "/js" URL. You can change it by setting:
 ```javascript
@@ -87,18 +92,18 @@ requirejs.config({
 ```
 The default server is set to: "/php/proxy.php". You can change it by setting:
 ```javascript
-jQuery.ui.baseurl = "https://example.com/cgi/myresponse";
+WidgetUI.baseurl = "https://example.com/cgi/myresponse";
 ```
 
 ## Status
 
-To be sincere, I haven't have the chance to test this code in a complex project. I started this framework for an online game tracker which was not finalized due to my busy schedule. However I think it is useful as it is. That's why I decided to share it. I will try to use it in future projects in order to improve it.
+To be sincere, I haven't have the chance to test this code in a complex project. I started this framework for an online game tracker which was not finalized due to my busy schedule. However I think it is useful as it is (that's why I decided to share it). I will keep improving it as much as I can.
 
 ## When to use it?
 
-I think this framework is specially benefical for monitoring systems. If you are going to start a new project which contains many different kind of widgets, then I think you may find useful this small piece of code.
+I think this framework is specially benefical for monitoring systems. If you are going to start a new project which contains many different kind of widgets, then I think you may find it useful.
 
-If your project has complex interactions between widgets (or pieces of code), I would recommend to use AngularJS, which helps you to keep such relations updated easily. However, if your current system is using JQuery and you are looking for greater abstraction and modularity, then I think this framework may be good for you.
+If your project has complex interactions between widgets (or pieces of code), I would recommend to use AngularJS, which helps you to keep such relations updated easily. However, if your current system is using JQuery and you are looking for greater abstraction and modularity, then I think this framework could be good for you.
 
 
 
