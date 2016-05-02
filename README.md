@@ -52,11 +52,11 @@ define(
             template : "time",
             request  : "currtime", //If omitted, it will use template name as request parameter: ?req=time
             render   : function(data, calblack) {
-                //This callback uses "transparency.js". To understand it, please check transparency.js documentation.
+                //This callback uses "transparency.js". More details at the transparency.js documentation.
                 callback({
                     models: data, //Object used as data provider
                     directives: { 
-                        mytime : { //Can be a class or id
+                        mytime : { //Can be a class name (css) or id
                             text : function () { return this.d; } //this.d is: model.d (data.d comes from the server response)
                         }
                     }
