@@ -51,21 +51,20 @@ define(
         TimeWidget = Widget.extend({ //If you want to extend "basicWidget", use ... = basicWidget.extend({ ...
             template : "time",
             request  : "currtime", //If omitted, it will use template name as request parameter: ?req=time
-            render   : function(data, calblack) {
-                //This callback uses "transparency.js". More details at the transparency.js documentation.
-                callback({
-                    models: data, //Object used as data provider
-                    directives: { 
-                        mytime : { //Can be a class name (css) or id
-                            text : function () { return this.d; } //this.d is: model.d (data.d comes from the server response)
-                        }
+            directives : function(data) {
+                return {
+                    mytime : {
+                        text : function () { return this.d; } //'this' is corresponding to "data"
                     }
-                });
-            }
+                }
+            }			
         });
     }
 );
 ```
+see: [Widget.src.js](https://github.com/lepe/widgets.ui.js/blob/master/src/Widget.src.js) to see widget options.
+
+
 "time.htm" template:
 ```html
 <div class="timer">

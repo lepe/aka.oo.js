@@ -2,42 +2,44 @@
 var Class = chic.Class;
 /* UI class */
 var UI = Class.extend({
-    elem : null,
-    baseurl  : "",
-    widgets : [],
+    elem	  : null,
+    server    : "",
+	templates : "",
+    widgets   : [],
     //Initialize the Widget with initparam (used to recycle widget)
     init: function() {},
     //------------ PRIVATE --------------
     //Retrieve data from server
     _query : function(widget, callback) {
-        widget.params.req = widget.request || widget.template;
-        $.getJSON(this.baseurl, widget.params).done(function(data) {
+        widget.params[widget.parameter || "req"] = widget.request || widget.template;
+        $.getJSON(widget.server || this.server, widget.params).done(function(data) {
             callback(widget, data);
         });
     },
     _getTemplate : function(widget, callback) {
-        $.get("/htm/"+widget.template+".htm").done(function(res){
+        $.get(this.templates+"/"+widget.template+".htm").done(function(res){
             widget.html = res;
             callback(widget);
         });
     },
     //Apply data and directives into the template and insert it 
-    _transform : function(widget, set, callback) {
+    _transform : function(widget, data) {
         var $html = $(widget.html);
 		//Create unique ID:
         var elems = $("[id^='"+widget.prefix+"']").length;
 		widget.widget_id = widget.prefix+(elems);
 		$html.attr("id",widget.widget_id);
         //When there is no child in template (single element), we
-        //insert the element into the selector and then apply render 
+        //insert the element into the selector and then apply render
+		var directives = widget.directives(data);
         if($html.children().length === 0) {
             $(widget.parent)[widget.action]($html);
-			if(set !== null) $(widget.parent).render(set.models, set.directives);
+			if(widget.data !== null) $(widget.parent).render(data, directives);
         } else {
-			if(set !== null) $html.render(set.models, set.directives);
+			if(widget.data !== null) $html.render(data, directives);
             $(widget.parent)[widget.action]($html);
         }
-        if(callback !== undefined) callback($html);
+        if(widget.ready !== undefined) widget.ready($html);
     },
     //------------ PUBLIC ---------------
     addWidget: function(action, widget, elem) {
@@ -53,12 +55,10 @@ var UI = Class.extend({
 			if($parent === undefined || $parent.is(widget.parent) || $parent.find(widget.parent).length) {
 				//TODO: place "loading" in parent
 				ui._getTemplate(widget, function(widget) {
-					widget.setup();
 					widget.update = function() {
+						widget.setup();
 						ui._query(widget, function(widget, data) {
-							widget.render(data,function(set, callback) {
-								ui._transform(widget, set, callback);
-							});
+							ui._transform(widget, data);
 						});
 					};
 					widget.update();

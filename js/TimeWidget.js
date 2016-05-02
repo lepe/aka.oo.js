@@ -3,15 +3,12 @@ define(
 	function(){
 		TimeWidget = Widget.extend({
             template : "time",
-			render   : function(data, callback) {
-				callback({
-					models: data,
-					directives: {
-						mytime : {
-							text : function () { return this.d; }
-						}
+			directives : function(data) {
+				return {
+					mytime : {
+						text : function () { return this.d; } //this is corresponding to "data"
 					}
-				});
+				}
 			}
 		});
 	}

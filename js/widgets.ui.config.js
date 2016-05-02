@@ -4,7 +4,8 @@ requirejs.config({
 });
 //Set UI config. 
 var WidgetUI = new UI();
-WidgetUI.baseurl = '/php/proxy.php'; //Server location
+WidgetUI.server = '/php/proxy.php'; //Default server location
+WidgetUI.templates = '/htm'; //Templates location
 
 //Example of shortcuts (recommended):
 jQuery.fn.appendWidget = function(widget) {
