@@ -1,10 +1,10 @@
 # widgets.ui.js
 Its main goal is to create Web applications using "Widgets" which can be reused, expanded and updated easily.
 
-* [Demo]()
-* [Download Demo(500K)]() *Recommended
-* [Download library only (2K)]()
-* [Download Bundle (10K)]() 
+* [Demo](http://widgets_ui.alepe.com/)
+* [Download Demo](https://github.com/lepe/widgets.ui.js/archive/master.zip) *Recommended
+* [Download library only (2K)](https://raw.githubusercontent.com/lepe/widgets.ui.js/master/js/widgets.ui.js)
+* [Download Bundle (12K)](https://github.com/lepe/widgets.ui.js/raw/master/widgets.ui.bundle.zip) 
 
 This framework uses:
 * [require.js](https://github.com/requirejs/requirejs) to automatically download required Javascript files (on demand).
@@ -14,13 +14,13 @@ This framework uses:
 
 ### What do you need to test it?
 
-You need the above 3 dependencies (I have prepared a minimized version of the 3: [widgets.ui.depend.js]()), the library file [widgets.ui.js]() and the configuration file [widgets.ui.config.js](). All those files are included in "Download Bundle" and in the "Download Demo".
+You need the above 3 dependencies (I have prepared a minimized version of the 3: [widgets.ui.depend.js](https://github.com/lepe/widgets.ui.js/blob/master/js/widgets.ui.depend.js)), the library file [widgets.ui.js](https://github.com/lepe/widgets.ui.js/blob/master/js/widgets.ui.js) and the configuration file [widgets.ui.config.js](https://github.com/lepe/widgets.ui.js/blob/master/js/widgets.ui.config.js). All those files are included in "Download Bundle" and in the "Download Demo" (from the links above).
 
 There are mainly 2 classes:
 ### UI
 This class is used to create the general user interface. It also controls the communication with the server and initialize the Widgets.
 
-Example Usage [demo.js](): 
+Example Usage [demo.js](https://github.com/lepe/widgets.ui.js/blob/master/js/demo.js): 
 
 ```javascript
 require(
@@ -42,7 +42,7 @@ require(
 ### Widget
 This class serves as a base for all possible Widgets, so all widgets should extend this class. You can extend your widgets in the same way to create more specific widgets.
 
-Example: [TimeWidget.js]()
+Example: [TimeWidget.js](https://github.com/lepe/widgets.ui.js/blob/master/js/TimeWidget.js)
 
 ```javascript
 define(
@@ -89,7 +89,7 @@ define(
 ?>
 ```
 
-## Initial settings (see: [widgets.ui.config.js]())
+## Initial settings (see: [widgets.ui.config.js](https://github.com/lepe/widgets.ui.js/blob/master/js/widgets.ui.config.js))
 
 By default require.js is set to search required javascript files at "/js" URL. You can change it by setting:
 ```javascript
