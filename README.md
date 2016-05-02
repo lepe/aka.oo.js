@@ -1,4 +1,4 @@
-# aka.oo.js
+# widgets.ui.js
 JS Widget oriented framework using transparency.js + chic.js + require.js + jquery
 
 Its main goal is to create Web applications using "Widgets" which can be reused, expanded and updated easily.
