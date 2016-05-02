@@ -1,13 +1,17 @@
 # widgets.ui.js
-JS Widget oriented framework using transparency.js + chic.js + require.js + jquery
-
 Its main goal is to create Web applications using "Widgets" which can be reused, expanded and updated easily.
+
+[Demo]() [Download Demo(500K)]() [Download library only (2K)]() [Download Bundle (10K)]()
 
 This framework uses:
 * [require.js](https://github.com/requirejs/requirejs) to automatically download required Javascript files (on demand).
 * [chic.js](https://github.com/rowanmanning/chic) as a Class based model (which allows to use JS object as classes)
 * [transparency.js](https://github.com/leonidas/transparency) to interact with the HTML elements in a simpler way.
 * JQuery to simplify code
+
+### What do you need to test it?
+
+You need the above 3 dependencies (I have prepared a minimized version of the 3: [widgets.ui.depend.js]()), the library file [widgets.ui.js]() and the configuration file [widgets.ui.config.js](). All those files are included in "Download Bundle" and in the "Download Demo".
 
 There are mainly 2 classes:
 ### UI
