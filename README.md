@@ -92,4 +92,17 @@ jQuery.ui.baseurl = "https://example.com/cgi/myresponse";
 
 ## Status
 
-This code can be used to create simple and complex interfaces. It has not been totally tested and many things still to be done. I won't recommend its use for production servers, but feel free to experiment with it.
+To be sincere, I haven't have the chance to test this code in a complex project. I started this framework for an online game tracker which was not finalized due to my busy schedule. However I think it is useful as it is. That's why I decided to share it. I will try to use it in future projects in order to improve it.
+
+## When to use it?
+
+I think this framework is specially benefical for monitoring systems. If you are going to start a new project which contains many different kind of widgets, then I think you may find useful this small piece of code.
+
+If your project has complex interactions between widgets (or pieces of code), I would recommend to use AngularJS, which helps you to keep such relations updated easily. However, if your current system is using JQuery and you are looking for greater abstraction and modularity, then I think this framework may be good for you.
+
+
+
+
+
+
+
