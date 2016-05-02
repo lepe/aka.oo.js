@@ -1,7 +1,10 @@
 # widgets.ui.js
 Its main goal is to create Web applications using "Widgets" which can be reused, expanded and updated easily.
 
-[Demo]() [Download Demo(500K)]() [Download library only (2K)]() [Download Bundle (10K)]()
+* [Demo]()
+* [Download Demo(500K)]() *Recommended
+* [Download library only (2K)]()
+* [Download Bundle (10K)]() 
 
 This framework uses:
 * [require.js](https://github.com/requirejs/requirejs) to automatically download required Javascript files (on demand).
