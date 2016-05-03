@@ -1,7 +1,7 @@
 /**
  * widgets.ui.js 1.0.1
  * Author: A. Lepe (www.alepe.com)
- * Released under GPL 3.0 http://www.gnu.org/licenses/gpl-3.0.en.html
+ * Released under MIT license https://opensource.org/licenses/MIT
  */
 
 var Class=chic.Class;var UI=Class.extend({elem:null,server:"",templates:"",widgets:[],init:function(){},_query:function(a,b){a.params[a.parameter||"req"]=a.request||a.template;$.getJSON(a.server||this.server,a.params).done(function(c){b(a,c)})},_getTemplate:function(a,b){$.get(this.templates+"/"+a.template+".htm").done(function(c){a.html=c;b(a)})},_transform:function(d,c){var a=$(d.html);var b=$("[id^='"+d.prefix+"']").length;d.widget_id=d.prefix+(b);a.attr("id",d.widget_id);var e=d.directives(c);if(a.children().length===0){$(d.parent)[d.action](a);if(d.data!==null){$(d.parent).render(c,e)}}else{if(d.data!==null){a.render(c,e)}$(d.parent)[d.action](a)}if(d.ready!==undefined){d.ready(a)}},addWidget:function(c,b,a){b.parent=a;b.action=c;this.widgets.push(b);return a},doWidgets:function(d){var c=this;for(var a in this.widgets){var b=c.widgets[a];if(d===undefined||d.is(b.parent)||d.find(b.parent).length){c._getTemplate(b,function(e){e.update=function(){e.setup();c._query(e,function(g,f){c._transform(g,f)})};e.update()})}}}});
