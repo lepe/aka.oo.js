@@ -14,7 +14,7 @@ This framework uses:
 
 ### What do you need to test it?
 
-You need the above 3 dependencies (I have prepared a minimized version of the 3: [widgets.ui.depend.js](https://github.com/lepe/widgets.ui.js/blob/master/js/widgets.ui.depend.js)), the library file [widgets.ui.js](https://github.com/lepe/widgets.ui.js/blob/master/js/widgets.ui.js) and the configuration file [widgets.ui.config.js](https://github.com/lepe/widgets.ui.js/blob/master/js/widgets.ui.config.js). All those files are included in "Download Bundle" and in the "Download Demo" (from the links above).
+You need the above 4 dependencies (I have prepared a minimized version of the first 3): [widgets.ui.depend.js](https://github.com/lepe/widgets.ui.js/blob/master/js/widgets.ui.depend.js), the library file [widgets.ui.js](https://github.com/lepe/widgets.ui.js/blob/master/js/widgets.ui.js) and the configuration file [widgets.ui.config.js](https://github.com/lepe/widgets.ui.js/blob/master/js/widgets.ui.config.js). All those files are included in "Download Bundle" and in the "Download Demo" (from the links above).
 
 There are mainly 2 classes:
 ### UI
