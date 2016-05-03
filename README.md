@@ -97,9 +97,11 @@ requirejs.config({
     baseUrl: 'https://example.com/cdn/js'
 });
 ```
-The default server is set to: "/php/proxy.php". You can change it by setting:
+You must specify where is your server and your templates (htm files):
 ```javascript
-WidgetUI.baseurl = "https://example.com/cgi/myresponse";
+WidgetUI = new UI();
+WidgetUI.server = "https://example.com/cgi/myresponse";
+WidgetUI.templates = "/templates/";
 ```
 
 ## Status
